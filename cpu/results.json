@@ -1,0 +1,279 @@
+{
+  "experiment": "CPU 分块平方和与 Frobenius 范数功能验证",
+  "execution": "单进程顺序执行四个逻辑数据块",
+  "reproduce_from_repo_root": "python cpu/check_reduction.py",
+  "python_version": "3.12.14",
+  "partitions": 4,
+  "relative_tolerance": 1e-12,
+  "absolute_tolerance": 1e-12,
+  "case_count": 5,
+  "cases": [
+    {
+      "case": "hand_verifiable",
+      "shape": [
+        4,
+        2
+      ],
+      "input": {
+        "values": [
+          [
+            -3,
+            0
+          ],
+          [
+            0,
+            -2
+          ],
+          [
+            2,
+            -2
+          ],
+          [
+            0,
+            2
+          ]
+        ],
+        "reference": "9 + 4 + 8 + 4"
+      },
+      "tiles": [
+        {
+          "row_start": 0,
+          "row_stop": 1,
+          "row_count": 1,
+          "partial_sum_squares": 9.0
+        },
+        {
+          "row_start": 1,
+          "row_stop": 2,
+          "row_count": 1,
+          "partial_sum_squares": 4.0
+        },
+        {
+          "row_start": 2,
+          "row_stop": 3,
+          "row_count": 1,
+          "partial_sum_squares": 8.0
+        },
+        {
+          "row_start": 3,
+          "row_stop": 4,
+          "row_count": 1,
+          "partial_sum_squares": 4.0
+        }
+      ],
+      "sum_squares": 25.0,
+      "reference_sum_squares": 25,
+      "sum_squares_abs_error": 0.0,
+      "frobenius_norm": 5.0,
+      "reference_frobenius_norm": 5.0,
+      "norm_abs_error": 0.0,
+      "checks": {
+        "covers_all_rows_without_overlap": true,
+        "total_element_count_matches": true,
+        "sum_squares_matches_reference": true,
+        "frobenius_norm_matches_reference": true,
+        "hand_computed_partial_sums": true
+      }
+    },
+    {
+      "case": "lecture_shape",
+      "shape": [
+        4096,
+        1024
+      ],
+      "input": {
+        "formula": "(row + col - (rows // 2 + cols // 2)) / 10",
+        "exact_reference_numerator": 6230569385984,
+        "exact_reference_denominator": 100
+      },
+      "tiles": [
+        {
+          "row_start": 0,
+          "row_stop": 1024,
+          "row_count": 1024,
+          "partial_sum_squares": 26603751997.44
+        },
+        {
+          "row_start": 1024,
+          "row_stop": 2048,
+          "row_count": 1024,
+          "partial_sum_squares": 4592044605.44
+        },
+        {
+          "row_start": 2048,
+          "row_stop": 3072,
+          "row_count": 1024,
+          "partial_sum_squares": 4570569768.96
+        },
+        {
+          "row_start": 3072,
+          "row_stop": 4096,
+          "row_count": 1024,
+          "partial_sum_squares": 26539327488.0
+        }
+      ],
+      "sum_squares": 62305693859.84,
+      "reference_sum_squares": 62305693859.84,
+      "sum_squares_abs_error": 0.0,
+      "frobenius_norm": 249611.0852102526,
+      "reference_frobenius_norm": 249611.0852102526,
+      "norm_abs_error": 0.0,
+      "checks": {
+        "covers_all_rows_without_overlap": true,
+        "total_element_count_matches": true,
+        "sum_squares_matches_reference": true,
+        "frobenius_norm_matches_reference": true
+      }
+    },
+    {
+      "case": "uneven_tail",
+      "shape": [
+        4097,
+        17
+      ],
+      "input": {
+        "formula": "(row + col - (rows // 2 + cols // 2)) / 10",
+        "exact_reference_numerator": 97425578392,
+        "exact_reference_denominator": 100
+      },
+      "tiles": [
+        {
+          "row_start": 0,
+          "row_stop": 1024,
+          "row_count": 1024,
+          "partial_sum_squares": 426189184.0
+        },
+        {
+          "row_start": 1024,
+          "row_stop": 2048,
+          "row_count": 1024,
+          "partial_sum_squares": 60938705.92
+        },
+        {
+          "row_start": 2048,
+          "row_stop": 3072,
+          "row_count": 1024,
+          "partial_sum_squares": 60760448.0
+        },
+        {
+          "row_start": 3072,
+          "row_stop": 4097,
+          "row_count": 1025,
+          "partial_sum_squares": 426367446.0
+        }
+      ],
+      "sum_squares": 974255783.92,
+      "reference_sum_squares": 974255783.92,
+      "sum_squares_abs_error": 0.0,
+      "frobenius_norm": 31213.070722375265,
+      "reference_frobenius_norm": 31213.070722375265,
+      "norm_abs_error": 0.0,
+      "checks": {
+        "covers_all_rows_without_overlap": true,
+        "total_element_count_matches": true,
+        "sum_squares_matches_reference": true,
+        "frobenius_norm_matches_reference": true
+      }
+    },
+    {
+      "case": "fewer_rows_than_tiles",
+      "shape": [
+        2,
+        7
+      ],
+      "input": {
+        "formula": "(row + col - (rows // 2 + cols // 2)) / 10",
+        "exact_reference_numerator": 63,
+        "exact_reference_denominator": 100
+      },
+      "tiles": [
+        {
+          "row_start": 0,
+          "row_stop": 0,
+          "row_count": 0,
+          "partial_sum_squares": 0.0
+        },
+        {
+          "row_start": 0,
+          "row_stop": 1,
+          "row_count": 1,
+          "partial_sum_squares": 0.35000000000000003
+        },
+        {
+          "row_start": 1,
+          "row_stop": 1,
+          "row_count": 0,
+          "partial_sum_squares": 0.0
+        },
+        {
+          "row_start": 1,
+          "row_stop": 2,
+          "row_count": 1,
+          "partial_sum_squares": 0.28
+        }
+      ],
+      "sum_squares": 0.6300000000000001,
+      "reference_sum_squares": 0.63,
+      "sum_squares_abs_error": 1.1102230246251565e-16,
+      "frobenius_norm": 0.7937253933193773,
+      "reference_frobenius_norm": 0.7937253933193772,
+      "norm_abs_error": 1.1102230246251565e-16,
+      "checks": {
+        "covers_all_rows_without_overlap": true,
+        "total_element_count_matches": true,
+        "sum_squares_matches_reference": true,
+        "frobenius_norm_matches_reference": true
+      }
+    },
+    {
+      "case": "empty_matrix",
+      "shape": [
+        0,
+        7
+      ],
+      "input": {
+        "formula": "(row + col - (rows // 2 + cols // 2)) / 10",
+        "exact_reference_numerator": 0,
+        "exact_reference_denominator": 100
+      },
+      "tiles": [
+        {
+          "row_start": 0,
+          "row_stop": 0,
+          "row_count": 0,
+          "partial_sum_squares": 0.0
+        },
+        {
+          "row_start": 0,
+          "row_stop": 0,
+          "row_count": 0,
+          "partial_sum_squares": 0.0
+        },
+        {
+          "row_start": 0,
+          "row_stop": 0,
+          "row_count": 0,
+          "partial_sum_squares": 0.0
+        },
+        {
+          "row_start": 0,
+          "row_stop": 0,
+          "row_count": 0,
+          "partial_sum_squares": 0.0
+        }
+      ],
+      "sum_squares": 0.0,
+      "reference_sum_squares": 0.0,
+      "sum_squares_abs_error": 0.0,
+      "frobenius_norm": 0.0,
+      "reference_frobenius_norm": 0.0,
+      "norm_abs_error": 0.0,
+      "checks": {
+        "covers_all_rows_without_overlap": true,
+        "total_element_count_matches": true,
+        "sum_squares_matches_reference": true,
+        "frobenius_norm_matches_reference": true
+      }
+    }
+  ]
+}

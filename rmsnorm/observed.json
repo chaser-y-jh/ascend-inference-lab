@@ -1,0 +1,549 @@
+{
+  "device": "CPU",
+  "backend": "NumPy",
+  "dtype": "float32",
+  "eps": 1e-06,
+  "python": "3.12.14",
+  "numpy": "2.3.5",
+  "os": "Windows",
+  "architecture": "AMD64",
+  "processor_family": "Intel64 Family 6 Model 186 Stepping 2, GenuineIntel",
+  "seed": 41,
+  "timing": "wall-clock ms/call, fixed inputs; reuse and reuse_copy preallocate scratch outside timer; reuse_copy includes a fresh output copy",
+  "tolerance": {
+    "rtol": 2e-05,
+    "atol": 2e-06
+  },
+  "cases": [
+    {
+      "shape": [
+        128,
+        1024
+      ],
+      "calls_per_observation": 10,
+      "pairs": 24,
+      "max_abs_error_vs_float64": {
+        "allocate": 9.13092645937752e-07,
+        "reuse": 9.13092645937752e-07,
+        "reuse_copy": 9.13092645937752e-07
+      },
+      "median_ms": {
+        "allocate": 0.45660999999999996,
+        "reuse": 0.12162,
+        "reuse_copy": 0.15543
+      },
+      "paired_delta_ms": {
+        "q1": 0.30654750000000003,
+        "median": 0.334925,
+        "q3": 0.34721500000000005
+      },
+      "samples_ms_per_call": [
+        {
+          "order": [
+            "allocate",
+            "reuse",
+            "reuse_copy"
+          ],
+          "allocate": 0.45602,
+          "reuse": 0.1233,
+          "reuse_copy": 0.15606
+        },
+        {
+          "order": [
+            "reuse",
+            "allocate",
+            "reuse_copy"
+          ],
+          "reuse": 0.11864,
+          "allocate": 0.41473,
+          "reuse_copy": 0.15428
+        },
+        {
+          "order": [
+            "reuse",
+            "allocate",
+            "reuse_copy"
+          ],
+          "reuse": 0.11862,
+          "allocate": 0.4978,
+          "reuse_copy": 0.1528
+        },
+        {
+          "order": [
+            "reuse",
+            "allocate",
+            "reuse_copy"
+          ],
+          "reuse": 0.1146,
+          "allocate": 0.46071,
+          "reuse_copy": 0.19623
+        },
+        {
+          "order": [
+            "reuse_copy",
+            "allocate",
+            "reuse"
+          ],
+          "reuse_copy": 0.16088,
+          "allocate": 0.46906,
+          "reuse": 0.1255
+        },
+        {
+          "order": [
+            "allocate",
+            "reuse",
+            "reuse_copy"
+          ],
+          "allocate": 0.45409,
+          "reuse": 0.12999,
+          "reuse_copy": 0.1603
+        },
+        {
+          "order": [
+            "reuse",
+            "reuse_copy",
+            "allocate"
+          ],
+          "reuse": 0.12501,
+          "reuse_copy": 0.14087,
+          "allocate": 0.46755
+        },
+        {
+          "order": [
+            "allocate",
+            "reuse_copy",
+            "reuse"
+          ],
+          "allocate": 0.43608,
+          "reuse_copy": 0.16456,
+          "reuse": 0.12206
+        },
+        {
+          "order": [
+            "reuse",
+            "reuse_copy",
+            "allocate"
+          ],
+          "reuse": 0.11788,
+          "reuse_copy": 0.14265,
+          "allocate": 0.42409
+        },
+        {
+          "order": [
+            "reuse",
+            "reuse_copy",
+            "allocate"
+          ],
+          "reuse": 0.11928,
+          "reuse_copy": 0.21117,
+          "allocate": 0.50911
+        },
+        {
+          "order": [
+            "allocate",
+            "reuse_copy",
+            "reuse"
+          ],
+          "allocate": 0.4572,
+          "reuse_copy": 0.15744,
+          "reuse": 0.11937
+        },
+        {
+          "order": [
+            "reuse_copy",
+            "allocate",
+            "reuse"
+          ],
+          "reuse_copy": 0.13693,
+          "allocate": 0.4794,
+          "reuse": 0.14227
+        },
+        {
+          "order": [
+            "reuse_copy",
+            "reuse",
+            "allocate"
+          ],
+          "reuse_copy": 0.16112,
+          "reuse": 0.11839,
+          "allocate": 0.42827
+        },
+        {
+          "order": [
+            "allocate",
+            "reuse",
+            "reuse_copy"
+          ],
+          "allocate": 0.41892,
+          "reuse": 0.1425,
+          "reuse_copy": 0.1541
+        },
+        {
+          "order": [
+            "allocate",
+            "reuse_copy",
+            "reuse"
+          ],
+          "allocate": 0.46127,
+          "reuse_copy": 0.1548,
+          "reuse": 0.11646
+        },
+        {
+          "order": [
+            "reuse_copy",
+            "reuse",
+            "allocate"
+          ],
+          "reuse_copy": 0.13414,
+          "reuse": 0.11418,
+          "allocate": 0.40198
+        },
+        {
+          "order": [
+            "allocate",
+            "reuse",
+            "reuse_copy"
+          ],
+          "allocate": 0.50804,
+          "reuse": 0.12236,
+          "reuse_copy": 0.15937
+        },
+        {
+          "order": [
+            "reuse",
+            "reuse_copy",
+            "allocate"
+          ],
+          "reuse": 0.11916,
+          "reuse_copy": 0.13517,
+          "allocate": 0.40099
+        },
+        {
+          "order": [
+            "reuse_copy",
+            "allocate",
+            "reuse"
+          ],
+          "reuse_copy": 0.14617,
+          "allocate": 0.53635,
+          "reuse": 0.13981
+        },
+        {
+          "order": [
+            "reuse_copy",
+            "reuse",
+            "allocate"
+          ],
+          "reuse_copy": 0.17182,
+          "reuse": 0.12118,
+          "allocate": 0.42784
+        },
+        {
+          "order": [
+            "reuse_copy",
+            "reuse",
+            "allocate"
+          ],
+          "reuse_copy": 0.15269,
+          "reuse": 0.12546,
+          "allocate": 0.52248
+        },
+        {
+          "order": [
+            "allocate",
+            "reuse_copy",
+            "reuse"
+          ],
+          "allocate": 0.45402,
+          "reuse_copy": 0.22995,
+          "reuse": 0.14238
+        },
+        {
+          "order": [
+            "reuse_copy",
+            "allocate",
+            "reuse"
+          ],
+          "reuse_copy": 0.17452,
+          "allocate": 0.47414,
+          "reuse": 0.12361
+        },
+        {
+          "order": [
+            "reuse",
+            "allocate",
+            "reuse_copy"
+          ],
+          "reuse": 0.1139,
+          "allocate": 0.4166,
+          "reuse_copy": 0.15453
+        }
+      ]
+    },
+    {
+      "shape": [
+        2048,
+        1024
+      ],
+      "calls_per_observation": 3,
+      "pairs": 24,
+      "max_abs_error_vs_float64": {
+        "allocate": 1.6103716760085263e-06,
+        "reuse": 1.6103716760085263e-06,
+        "reuse_copy": 1.6103716760085263e-06
+      },
+      "median_ms": {
+        "allocate": 9.612516666666666,
+        "reuse": 3.8212333333333333,
+        "reuse_copy": 5.568616666666666
+      },
+      "paired_delta_ms": {
+        "q1": 5.322708333333332,
+        "median": 5.704466666666667,
+        "q3": 5.9558
+      },
+      "samples_ms_per_call": [
+        {
+          "order": [
+            "reuse",
+            "reuse_copy",
+            "allocate"
+          ],
+          "reuse": 3.6304,
+          "reuse_copy": 5.4907,
+          "allocate": 10.7143
+        },
+        {
+          "order": [
+            "reuse_copy",
+            "allocate",
+            "reuse"
+          ],
+          "reuse_copy": 5.6466,
+          "allocate": 12.3282,
+          "reuse": 4.411066666666667
+        },
+        {
+          "order": [
+            "allocate",
+            "reuse_copy",
+            "reuse"
+          ],
+          "allocate": 10.594833333333334,
+          "reuse_copy": 5.859766666666667,
+          "reuse": 3.9845333333333337
+        },
+        {
+          "order": [
+            "reuse",
+            "allocate",
+            "reuse_copy"
+          ],
+          "reuse": 3.9414666666666665,
+          "allocate": 9.950666666666667,
+          "reuse_copy": 5.6366
+        },
+        {
+          "order": [
+            "reuse",
+            "allocate",
+            "reuse_copy"
+          ],
+          "reuse": 3.6633666666666667,
+          "allocate": 9.511733333333334,
+          "reuse_copy": 5.396766666666667
+        },
+        {
+          "order": [
+            "reuse",
+            "allocate",
+            "reuse_copy"
+          ],
+          "reuse": 4.0205,
+          "allocate": 9.841933333333333,
+          "reuse_copy": 5.308366666666667
+        },
+        {
+          "order": [
+            "allocate",
+            "reuse",
+            "reuse_copy"
+          ],
+          "allocate": 9.114666666666666,
+          "reuse": 3.6078666666666663,
+          "reuse_copy": 5.0177
+        },
+        {
+          "order": [
+            "allocate",
+            "reuse_copy",
+            "reuse"
+          ],
+          "allocate": 9.653533333333334,
+          "reuse_copy": 5.382733333333333,
+          "reuse": 3.7155333333333336
+        },
+        {
+          "order": [
+            "reuse",
+            "allocate",
+            "reuse_copy"
+          ],
+          "reuse": 3.5483666666666664,
+          "allocate": 9.247366666666666,
+          "reuse_copy": 4.700066666666667
+        },
+        {
+          "order": [
+            "reuse",
+            "reuse_copy",
+            "allocate"
+          ],
+          "reuse": 3.7658,
+          "reuse_copy": 5.500633333333333,
+          "allocate": 10.668366666666666
+        },
+        {
+          "order": [
+            "reuse",
+            "reuse_copy",
+            "allocate"
+          ],
+          "reuse": 4.095133333333333,
+          "reuse_copy": 6.164933333333333,
+          "allocate": 9.805066666666667
+        },
+        {
+          "order": [
+            "allocate",
+            "reuse",
+            "reuse_copy"
+          ],
+          "allocate": 9.171466666666666,
+          "reuse": 4.2432,
+          "reuse_copy": 5.957866666666667
+        },
+        {
+          "order": [
+            "reuse_copy",
+            "reuse",
+            "allocate"
+          ],
+          "reuse_copy": 5.138233333333333,
+          "reuse": 3.3390333333333335,
+          "allocate": 8.903733333333333
+        },
+        {
+          "order": [
+            "reuse_copy",
+            "allocate",
+            "reuse"
+          ],
+          "reuse_copy": 5.433333333333333,
+          "allocate": 9.120833333333334,
+          "reuse": 3.2330666666666663
+        },
+        {
+          "order": [
+            "allocate",
+            "reuse_copy",
+            "reuse"
+          ],
+          "allocate": 9.6783,
+          "reuse_copy": 5.7837,
+          "reuse": 3.2535333333333334
+        },
+        {
+          "order": [
+            "allocate",
+            "reuse_copy",
+            "reuse"
+          ],
+          "allocate": 9.394233333333334,
+          "reuse_copy": 5.221666666666667,
+          "reuse": 3.8085666666666667
+        },
+        {
+          "order": [
+            "reuse_copy",
+            "reuse",
+            "allocate"
+          ],
+          "reuse_copy": 5.7692,
+          "reuse": 3.7245,
+          "allocate": 9.048766666666666
+        },
+        {
+          "order": [
+            "reuse_copy",
+            "reuse",
+            "allocate"
+          ],
+          "reuse_copy": 6.0477,
+          "reuse": 3.8339,
+          "allocate": 9.583366666666667
+        },
+        {
+          "order": [
+            "allocate",
+            "reuse",
+            "reuse_copy"
+          ],
+          "allocate": 9.641666666666666,
+          "reuse": 4.640966666666667,
+          "reuse_copy": 5.0659
+        },
+        {
+          "order": [
+            "reuse_copy",
+            "allocate",
+            "reuse"
+          ],
+          "reuse_copy": 7.2381,
+          "allocate": 13.1878,
+          "reuse": 7.869766666666667
+        },
+        {
+          "order": [
+            "reuse_copy",
+            "reuse",
+            "allocate"
+          ],
+          "reuse_copy": 6.8444,
+          "reuse": 7.5986,
+          "allocate": 10.314133333333334
+        },
+        {
+          "order": [
+            "reuse_copy",
+            "allocate",
+            "reuse"
+          ],
+          "reuse_copy": 6.4133,
+          "allocate": 9.285733333333335,
+          "reuse": 3.9379333333333335
+        },
+        {
+          "order": [
+            "reuse",
+            "reuse_copy",
+            "allocate"
+          ],
+          "reuse": 4.577633333333333,
+          "reuse_copy": 6.374466666666667,
+          "allocate": 8.960166666666666
+        },
+        {
+          "order": [
+            "allocate",
+            "reuse",
+            "reuse_copy"
+          ],
+          "allocate": 8.561,
+          "reuse": 3.6216666666666666,
+          "reuse_copy": 4.996566666666667
+        }
+      ]
+    }
+  ]
+}

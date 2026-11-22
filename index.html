@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>RMSNorm 性能实验</title>
+<style>
+body{margin:0;background:#f7f8f4;color:#20372f;font:17px/1.8 "Microsoft YaHei",sans-serif}
+main{max-width:900px;margin:auto;padding:48px 24px}h1,h2{line-height:1.3;color:#183a32}h1{font-size:clamp(29px,4vw,43px);margin:12px 0}h2{margin-top:36px;font-size:25px}
+a{color:#006c56;text-underline-offset:3px}nav{display:flex;flex-wrap:wrap;gap:10px 22px}figure{margin:20px 0}img{width:100%;height:auto;background:#fff;border:1px solid #ccd9cf}figcaption,small{color:#52695c}pre{overflow:auto;padding:14px;background:#eaf0e9}table{border-collapse:collapse;width:100%}td,th{text-align:left;border-bottom:1px solid #c8d9cf;padding:8px}summary{cursor:pointer}section{scroll-margin-top:10px}
+</style></head><body><main>
+<nav><a href="README.md">项目说明</a><a href="rmsnorm/compare.py">基准代码</a><a href="rmsnorm/observed.json">原始计时</a><a href="inference/README.md">NPU 实验指南</a></nav>
+<h1>RMSNorm 的临时数组，值得复用吗？</h1>
+<p>对同一组输入执行残差加法和 RMSNorm，比较三种 NumPy 写法。在本机 CPU 的 2048 × 1024 输入上，常规实现耗时中位数为 <strong>9.61 ms</strong>；复用临时缓冲且每次返回独立输出为 <strong>5.57 ms</strong>。最大矩阵上的三种结果都通过了与 FP64 参考值的比较。</p>
+<figure><img src="rmsnorm/latency.png" alt="两种输入形状分别做24轮对照。复用缓冲区最快，复用后复制输出次之，常规新建数组最慢。"><figcaption>每条线代表同一轮的三种实现，菱形是各实现的中位数。两幅图的纵轴范围不同，单位均为毫秒。</figcaption></figure>
+<h2>输出要保留多久？</h2>
+<table><thead><tr><th>每次调用的输出</th><th>128 × 1024</th><th>2048 × 1024</th></tr></thead><tbody>
+<tr><td>新建临时数组，返回独立结果</td><td>0.457 ms</td><td>9.613 ms</td></tr>
+<tr><td>复用缓冲区，下次调用覆盖结果</td><td>0.122 ms</td><td>3.821 ms</td></tr>
+<tr><td>复用缓冲区，复制一份独立结果</td><td>0.155 ms</td><td>5.569 ms</td></tr></tbody></table>
+<p>第三种实现专门测了保留结果的成本。比较接口行为相同的两种实现时，应看第一行和第三行。计时包含一次完整的 CPU 算子调用，各实现先预热，在固定输入上做 24 轮平衡顺序的对照。缓冲区首次创建在复用路径计时范围以外。<a href="rmsnorm/observed.json">查看逐轮数据和数值误差</a></p>
+<h2>另外两项可以复现的工作</h2>
+<p><strong>分块正确性。</strong>矩阵平方和验证覆盖了手算例子、课堂形状、尾块和空分区。4097 行分为 1024、1024、1024 和 1025 行，检查了边界连续性及最终范数。<a href="cpu/results.json">查看 5 组验证记录</a></p>
+<p><strong>Qwen3-8B 融合对照。</strong>分析器读取课程 Notebook 的输出，核对短、长输入的实际 token 数、融合开关、计时和文本质量。本项目已验证分析器，昇腾 NPU 上的实测数据待采集。<a href="inference/README.md">实验采集方法与复现步骤</a></p>
+<details><summary>复现实验命令</summary><pre>python cpu/check_reduction.py
+python -m pip install -r requirements.txt
+python rmsnorm/compare.py --output local-results/cpu-rerun.json
+python -B -m unittest discover -s inference -p "test_*.py"</pre></details>
+<p><small>本版代码、图表和报告由 Codex 辅助生成并在本机运行。课程来源、版本和贡献说明见 <a href="README.md">README</a>。</small></p>
+</main></body></html>
